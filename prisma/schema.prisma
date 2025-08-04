@@ -11,19 +11,19 @@ model Geofence {
   id               String       @id(map: "geo_zone_pkey") @default(uuid())
   type             String       @default("country")
   country_code     String
-  province_code    String?
-  cities           String[]     // ✅ Array de ciudades
-  municipalities   String[]     // ✅ Array de municipios
-  postal_codes     String[]     // ✅ Array de códigos postales
+  province_code    String[]
+  cities           String[]     
+  municipalities   String[]    
+  postal_codes     String[]     
   service_zone_id  String
-  postal_expression Json?       // ✅ Lo mantenemos opcional para casos futuros
+  postal_expression Json?      
   metadata         Json?
   created_at       DateTime     @default(now()) @db.Timestamptz(6)
   updated_at       DateTime     @default(now()) @db.Timestamptz(6)
   deleted_at       DateTime?    @db.Timestamptz(6)
   service_zone     service_zone @relation(fields: [service_zone_id], references: [id], onDelete: Cascade, map: "geo_zone_service_zone_id_foreign")
 
-  @@map("geofence")
+  @@map("geo_zone")
 }
 
 

@@ -1,11 +1,12 @@
 {
 	"scripts": {
-		"dev": "ts-node-dev --respawn src/index.ts"
+		"dev": "ts-node-dev --respawn src/index.ts",
+		    "test": "jest --runInBand --detectOpenHandles",
+    "test:watch": "jest --watchAll"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.11.1",
 		"cors": "^2.8.5",
-		"dotenv": "^17.1.0",
 		"express": "^5.1.0",
 		"mongoose": "^8.16.2",
 		"pg": "^8.16.3",
@@ -14,9 +15,15 @@
 	"devDependencies": {
 		"@types/cors": "^2.8.19",
 		"@types/express": "^5.0.3",
+		"@types/jest": "^30.0.0",
 		"@types/node": "^24.0.11",
+		"@types/supertest": "^6.0.3",
+		"dotenv": "^17.1.0",
+		"jest": "^30.0.5",
 		"nodemon": "^3.1.10",
 		"prisma": "^6.11.1",
+		"supertest": "^7.1.4",
+		"ts-jest": "^29.4.1",
 		"ts-node": "^10.9.2",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^5.8.3"

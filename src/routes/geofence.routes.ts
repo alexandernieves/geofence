@@ -1,15 +1,19 @@
-import express from 'express';
+import express from "express"
 import {
   createGeofence,
-  getGeofences
-} from '../controllers/geofence.controller';
+  getGeofences,
+  getGeofence,
+  updateGeofence,
+  deleteGeofence,
+} from "../controllers/geofence.controller"
 
-const router = express.Router();
+const router = express.Router()
 
-// ✅ GET: Buscar geofences por filtros (city, municipality, postal)
-router.get('/geofences', getGeofences);
+router.get("/geofences", getGeofences)
+router.post("/geofences", createGeofence)
+router.get("/geofences/:id", getGeofence)
+router.patch("/geofences/:id", updateGeofence)
+router.put("/geofences/:id", updateGeofence)   
+router.delete("/geofences/:id", deleteGeofence)
 
-// ✅ POST: Crear nueva geofence (con validación de duplicados)
-router.post('/geofences', createGeofence);
-
-export default router;
+export default router

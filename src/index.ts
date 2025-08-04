@@ -1,15 +1,29 @@
-import express from "express";
-import geofenceRoutes from "./routes/geofence.routes";
+import express from "express"
+import cors from "cors"
 
-const app = express();
+import geofenceRoutes from "./routes/geofence.routes"
+import serviceZoneRouter from "./routes/service_zone.routes"
+import fulfillmentSetRouter from "./routes/fulfillment_set.routes"
 
-// Middleware para parsear JSON
-app.use(express.json());
+const app = express()
 
-// Montar las rutas de geofences bajo /api
-app.use("/api", geofenceRoutes);
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+)
 
-// Iniciar servidor en el puerto 3000
+app.use(express.json())
+
+app.get("/api/health", (_req, res) => res.send("OK"))
+
+app.use("/api", geofenceRoutes)
+
+app.use("/api/service-zones", serviceZoneRouter)
+app.use("/api/fulfillment-sets", fulfillmentSetRouter)
+
 app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
+  console.log("Server running on http://localhost:3000")
+})

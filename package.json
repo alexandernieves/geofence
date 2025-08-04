@@ -1,10 +1,10 @@
 {
 	"scripts": {
 		"dev": "ts-node-dev --respawn src/index.ts",
-		    "test": "jest --runInBand --detectOpenHandles",
-    "test:watch": "jest --watchAll",
-	  "build": "tsc",
-  "start": "node dist/index.js"
+		"test": "jest --runInBand --detectOpenHandles",
+		"test:watch": "jest --watchAll",
+		"build": "tsc",
+		"start": "node dist/index.js"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.11.1",
@@ -12,6 +12,7 @@
 		"express": "^5.1.0",
 		"mongoose": "^8.16.2",
 		"pg": "^8.16.3",
+		"pnpm-lock.yaml": "^1.0.0",
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {

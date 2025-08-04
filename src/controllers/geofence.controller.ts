@@ -278,3 +278,25 @@ export const deleteGeofence = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Error deleting geofence" })
   }
 }
+
+export const getGeofenceByPostalCode = async (
+  req: Request,
+  res: Response
+) => {
+  const postal = (req.params.postal ?? "").trim()
+  if (!postal) return res.status(400).json({ message: "Postal code required" })
+
+  try {
+    const gf = await prisma.geofence.findFirst({
+      where: {
+        postal_codes: { has: postal },
+        deleted_at: null,
+      },
+    })
+    if (!gf) return res.status(404).json({ message: "Geofence not found" })
+    return res.json(gf)
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ message: "Error fetching geofence" })
+  }
+}

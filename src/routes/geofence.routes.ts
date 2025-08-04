@@ -1,19 +1,23 @@
-import express from "express"
+import express from "express";
 import {
   createGeofence,
   getGeofences,
   getGeofence,
   updateGeofence,
   deleteGeofence,
-} from "../controllers/geofence.controller"
+  getGeofenceByPostalCode,       
+} from "../controllers/geofence.controller";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/geofences", getGeofences)
-router.post("/geofences", createGeofence)
-router.get("/geofences/:id", getGeofence)
-router.patch("/geofences/:id", updateGeofence)
-router.put("/geofences/:id", updateGeofence)   
-router.delete("/geofences/:id", deleteGeofence)
+router.get("/geofences", getGeofences);
+router.post("/geofences", createGeofence);
 
-export default router
+router.get("/geofences/postal/:postal", getGeofenceByPostalCode); 
+
+router.get("/geofences/:id", getGeofence);
+router.patch("/geofences/:id", updateGeofence);
+router.put("/geofences/:id", updateGeofence);
+router.delete("/geofences/:id", deleteGeofence);
+
+export default router;

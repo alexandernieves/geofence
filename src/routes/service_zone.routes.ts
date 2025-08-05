@@ -6,8 +6,8 @@ import {
 
 const router = Router();
 
-router.route("/")
-  .post(createServiceZone)
-  .get(listServiceZones);
+//  /api/service-zones  → POST  |  GET
+router.post("/service-zones", createServiceZone);
+router.get("/service-zones", listServiceZones);
 
 export default router;
